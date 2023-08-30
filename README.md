@@ -18,4 +18,4 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository to your local machine using:
 
 ```bash
-git clone https://github.com/your-username/selenium-java-automation.git
+git clone https://github.com/andwaee/selenium-automation-with-java.git
