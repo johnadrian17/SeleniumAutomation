@@ -7,7 +7,6 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.LoginPage;
-import pages.ProductPage;
 
 public class LoginPageSteps {
     Scenario scenario;
