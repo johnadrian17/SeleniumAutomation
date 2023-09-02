@@ -14,8 +14,8 @@ public class BaseTest {
 
     public BaseTest() {
         if (driver == null) {
-            System.setProperty("webdriver.edge.driver", "D:\\Selenium\\msedgedriver.exe");
-            driver = new EdgeDriver();
+            System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+            driver = new ChromeDriver();
         }
         PageFactory.initElements(driver, this);
         driver.manage().window().maximize();

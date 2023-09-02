@@ -33,4 +33,10 @@ public class CartPage extends BaseTest {
         String xpath = "//a/div[text()='" + productname + "']/ancestor::div[@class='cart_item_label']/a/following-sibling::div[@class='item_pricebar']/button";
         return driver.findElement(By.xpath(xpath));
     }
+
+    //This is the region for clicking the element
+    public void clickCheckOutButtonButton() {
+        this.checkOutButton.click();
+    }
+    //This is the end region for clicking the element
 }

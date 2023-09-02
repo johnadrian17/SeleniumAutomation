@@ -28,9 +28,11 @@ public class HomePage extends BaseTest {
     private List<WebElement> allPrices;
     @FindBy(xpath = "//select[@class='product_sort_container']")
     private WebElement Select;
-
     @FindBy(xpath = "//span[@class='title']")
     private WebElement homePageHeaderText;
+    @FindBy(xpath = "//a[@class='shopping_cart_link']")
+    private WebElement cartIcon;
+
     Select dropdown = new Select(Select);
 
     private CommonUtil util = new CommonUtil();
@@ -91,5 +93,10 @@ public class HomePage extends BaseTest {
         Assert.assertTrue(assertion);
     }
 
+    //This is the region for clicking the element
+    public void clickCartIcon() {
+        this.cartIcon.click();
+    }
+    //This is the end region for clicking the element
 }
 

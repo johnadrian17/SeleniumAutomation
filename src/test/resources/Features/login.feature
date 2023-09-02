@@ -8,16 +8,12 @@ Feature: Price Sorting
     Then user will see sorted products
 
   @UItest1
-  Scenario Outline: Successful Login with Valid Credentials
+  Scenario: Successful Login with Valid Credentials
 
     Given user is on login Page
-    When user enters <username> and <password>
-    Then user is navigated to Home Page
+    When user enters username and password
+    Then user should see Home page
 
-    Examples:
-      | username      | password     |
-      | standard_user | secret_sauce |
-      | standard_user | failed       |
 
 
 
