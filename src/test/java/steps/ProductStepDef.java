@@ -2,7 +2,6 @@ package steps;
 
 import common.CommonUtil;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -28,12 +27,8 @@ public class ProductStepDef {
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
     }
 
-    @Then("^user will see sorted products$")
-    public void viewSortedProducts() {
-        homepage.getAllPrices();
-    }
 
-    @When("^user checkout products$")
+    @When("^user checkouts products$")
     public void checkoutProducts(DataTable productNames) throws IOException {
         List<List<String>> rows = productNames.asLists(String.class);
         for (List<String> column : rows) {
@@ -41,6 +36,19 @@ public class ProductStepDef {
             homepage.addProductToCart(column.get(1));
             homepage.addProductToCart(column.get(2));
         }
+        homepage.clickCartIcon();
+        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        cartpage.clickCheckOutButtonButton();
+        checkoutpage.fillInDetailsForCheckout();
+        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        checkoutpage.clickContinueButton();
+        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        checkoutconfirmationpage.clickFinishButton();
+    }
+
+    @When("^user checkouts (.*) products$")
+    public void checkoutProduct(String productName) throws IOException {
+        homepage.addProductToCart(productName);
         homepage.clickCartIcon();
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
         cartpage.clickCheckOutButtonButton();
@@ -61,5 +69,10 @@ public class ProductStepDef {
     public void userIsInHomePage() {
         homepage.validateHomePage();
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+    }
+
+    @Then("^user will see sorted products$")
+    public void viewSortedProducts() {
+        homepage.getAllPrices();
     }
 }
