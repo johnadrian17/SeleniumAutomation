@@ -6,14 +6,19 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.HomePage;
-import pages.LoginPage;
+import pages.*;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ProductStepDef {
     Scenario scenario;
     private HomePage homepage = new HomePage();
+    private CartPage cartpage = new CartPage();
+    private CheckOutPage checkoutpage = new CheckOutPage();
+    private CheckOutConfirmationPage checkoutconfirmationpage = new CheckOutConfirmationPage();
+    private CheckOutComplete checkoutcomplete = new CheckOutComplete();
+
     private CommonUtil util = new CommonUtil();
 
 
@@ -28,25 +33,31 @@ public class ProductStepDef {
         homepage.getAllPrices();
     }
 
-    @When("^user add multiple products$")
-    public void addProducts(DataTable productNames) {
+    @When("^user checkout products$")
+    public void checkoutProducts(DataTable productNames) throws IOException {
         List<List<String>> rows = productNames.asLists(String.class);
         for (List<String> column : rows) {
             homepage.addProductToCart(column.get(0));
             homepage.addProductToCart(column.get(1));
             homepage.addProductToCart(column.get(2));
         }
+        homepage.clickCartIcon();
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        cartpage.clickCheckOutButtonButton();
+        checkoutpage.fillInDetailsForCheckout();
+        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        checkoutpage.clickContinueButton();
+        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        checkoutconfirmationpage.clickFinishButton();
     }
 
-    @Then("^user should add multiple products to the cart$")
+    @Then("^user should successfully checkout the products$")
     public void validateCartCount() {
-        int expectedCartCount = 3;
-        homepage.validateCartCount(expectedCartCount);
+        checkoutcomplete.validateSuccessfulText();
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
     }
 
-    @Then("^user is navigated to Home Page$")
+    @Then("^user should see Home page$")
     public void userIsInHomePage() {
         homepage.validateHomePage();
         util.takeScreenshot(homepage.getDriver(), homepage.getScenario());

@@ -7,6 +7,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.LoginPage;
+import java.io.IOException;
 
 public class LoginPageSteps {
     Scenario scenario;
@@ -34,10 +35,11 @@ public class LoginPageSteps {
         loginpage.validateLoginPage();
     }
 
-    @When("^user enters (.*) and (.*)$")
-    public void userLoginWithCredentials(String username, String password) throws InterruptedException {
+    @When("^user enters username and password$")
+    public void userLoginWithCredentials() throws InterruptedException, IOException {
+        String username  = util.testDataHandler("username");
+        String password  = util.testDataHandler("password");
         loginpage.inputCredentials(username, password);
     }
-
 
 }

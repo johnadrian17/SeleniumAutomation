@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         glue = {"steps"},
         plugin = {"pretty","html:target/Report/Andrei.html"},
         monochrome = true,
-        tags=("") //pass tag of the scenarios you want to be executed
+        tags=("") //pass the tags of the scenarios you want to be executed
         )
 
 public class TestRunner {

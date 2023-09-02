@@ -12,7 +12,7 @@ public class CheckOutConfirmationPage extends BaseTest {
     @FindBy(id = "//button[@id='cancel']")
     private WebElement cancelButton;
     @FindBy(id = "finish")
-    private WebElement FinishButton;
+    private WebElement finishButton;
 
 
     public WebElement getElementProductName(String productname) {
@@ -34,5 +34,11 @@ public class CheckOutConfirmationPage extends BaseTest {
         return driver.findElement(By.xpath(xpath));
     }
 
+
+    //This is the region for clicking the element
+    public void clickFinishButton() {
+        this.finishButton.click();
+    }
+    //This is the end region for clicking the element
 
 }
