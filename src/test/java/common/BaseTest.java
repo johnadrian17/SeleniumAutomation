@@ -14,7 +14,7 @@ public class BaseTest {
 
     public BaseTest() {
         if (driver == null) {
-            System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "D:\\Selenium\\chromedriver-win64\\chromedriver.exe");
             driver = new ChromeDriver();
         }
         PageFactory.initElements(driver, this);
