@@ -4,6 +4,7 @@ import common.BaseTest;
 import common.CommonUtil;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.io.IOException;
 
 public class CheckOutPage extends BaseTest {

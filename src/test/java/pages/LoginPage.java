@@ -2,8 +2,6 @@ package pages;
 
 import common.BaseTest;
 import common.CommonUtil;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;

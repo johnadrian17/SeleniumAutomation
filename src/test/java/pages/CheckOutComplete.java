@@ -12,7 +12,7 @@ public class CheckOutComplete extends BaseTest {
     private WebElement homeButton;
 
 
-    public void validateSuccessfulText(){
+    public void validateSuccessfulText() {
         boolean assertion = this.successfulText.isDisplayed();
         Assert.assertTrue(assertion);
     }

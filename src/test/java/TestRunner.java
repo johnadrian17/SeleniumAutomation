@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/Features",
         glue = {"steps"},
-        plugin = {"pretty","html:target/Report/Andrei.html"},
+        plugin = {"pretty", "html:target/Report/Adrian.html"},
         monochrome = true,
-        tags=("") //pass the tags of the scenarios you want to be executed
-        )
+        tags = ("@UItest1") //pass the tags of the scenarios you want to be executed
+)
 
 public class TestRunner {
 }

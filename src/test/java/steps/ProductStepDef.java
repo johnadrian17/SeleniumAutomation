@@ -1,8 +1,8 @@
 package steps;
 
+import common.BaseTest;
 import common.CommonUtil;
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.*;
@@ -10,8 +10,7 @@ import pages.*;
 import java.io.IOException;
 import java.util.List;
 
-public class ProductStepDef {
-    Scenario scenario;
+public class ProductStepDef extends BaseTest {
     private HomePage homepage = new HomePage();
     private CartPage cartpage = new CartPage();
     private CheckOutPage checkoutpage = new CheckOutPage();
@@ -24,7 +23,7 @@ public class ProductStepDef {
     @When("^user sort products (.*)$")
     public void productSort(String DropdownItem) {
         homepage.selectOnDropdown(DropdownItem);
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
     }
 
 
@@ -37,12 +36,12 @@ public class ProductStepDef {
             homepage.addProductToCart(column.get(2));
         }
         homepage.clickCartIcon();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         cartpage.clickCheckOutButtonButton();
         checkoutpage.fillInDetailsForCheckout();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         checkoutpage.clickContinueButton();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         checkoutconfirmationpage.clickFinishButton();
     }
 
@@ -50,25 +49,25 @@ public class ProductStepDef {
     public void checkoutProduct(String productName) throws IOException {
         homepage.addProductToCart(productName);
         homepage.clickCartIcon();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         cartpage.clickCheckOutButtonButton();
         checkoutpage.fillInDetailsForCheckout();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         checkoutpage.clickContinueButton();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
         checkoutconfirmationpage.clickFinishButton();
     }
 
     @Then("^user should successfully checkout the products$")
     public void validateCartCount() {
         checkoutcomplete.validateSuccessfulText();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
     }
 
     @Then("^user should see Home page$")
     public void userIsInHomePage() {
         homepage.validateHomePage();
-        util.takeScreenshot(homepage.getDriver(), homepage.getScenario());
+        util.takeScreenshot(getDriver(), getScenario());
     }
 
     @Then("^user will see sorted products$")

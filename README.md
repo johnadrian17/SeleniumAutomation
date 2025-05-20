@@ -1,7 +1,7 @@
-
 # Automation with Selenium Java
 
-This repository contains automation scripts using Selenium with Java for web testing. The scripts are designed to help you automate various testing scenarios for web applications using the Selenium WebDriver framework.
+This repository contains automation scripts using Selenium with Java for web testing. The scripts are designed to help
+you automate various testing scenarios for web applications using the Selenium WebDriver framework.
 
 ## Prerequisites
 

@@ -1,5 +1,6 @@
 package steps;
 
+import common.BaseTest;
 import common.CommonUtil;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -7,17 +8,21 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import pages.LoginPage;
+
 import java.io.IOException;
 
-public class LoginPageSteps {
-    Scenario scenario;
+public class LoginPageSteps extends BaseTest {
     private LoginPage loginpage = new LoginPage();
     private CommonUtil util = new CommonUtil();
 
     @Before
     public void before(Scenario scenario) {
-        this.scenario = scenario;
-        loginpage.setScenario(scenario);
+        beforeScenario(scenario);
+    }
+
+    @After
+    public void after() {
+        afterScenario();
     }
 
     @Given("^user is in the product Home Page$")
@@ -37,9 +42,10 @@ public class LoginPageSteps {
 
     @When("^user enters username and password$")
     public void userLoginWithCredentials() throws InterruptedException, IOException {
-        String username  = util.testDataHandler("username");
-        String password  = util.testDataHandler("password");
+        String username = util.testDataHandler("username");
+        String password = util.testDataHandler("password");
         loginpage.inputCredentials(username, password);
     }
+
 
 }

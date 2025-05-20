@@ -28,13 +28,11 @@ public class HomePage extends BaseTest {
     private List<WebElement> allPrices;
     @FindBy(xpath = "//select[@class='product_sort_container']")
     private WebElement Select;
+    Select dropdown = new Select(Select);
     @FindBy(xpath = "//span[@class='title']")
     private WebElement homePageHeaderText;
     @FindBy(xpath = "//a[@class='shopping_cart_link']")
     private WebElement cartIcon;
-
-    Select dropdown = new Select(Select);
-
     private CommonUtil util = new CommonUtil();
 
 
@@ -55,6 +53,7 @@ public class HomePage extends BaseTest {
         String xpath = "//a/div[text()='" + productname + "']/ancestor::div[@class='inventory_item_label']/following-sibling::div/button";
         return driver.findElement(By.xpath(xpath));
     }
+
     public WebElement product(String productName) {
         String xpath = "//a/div[text()='" + productName + "']/ancestor::div[@class='inventory_item_label']/following-sibling::div/button";
         return driver.findElement(By.xpath(xpath));
@@ -64,6 +63,7 @@ public class HomePage extends BaseTest {
         String xpath = "//a[@class='shopping_cart_link']/span[text()='" + expectedCartCount + "']";
         return driver.findElement(By.xpath(xpath));
     }
+
     public void selectOnDropdown(String DropdownItem) {
         dropdown.selectByVisibleText(DropdownItem);
     }
