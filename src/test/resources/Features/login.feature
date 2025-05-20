@@ -7,7 +7,7 @@ Feature: Price Sorting
     When user sort products Price (high to low)
     Then user will see sorted products
 
-  @UItest12
+  @UItest1
   Scenario: Successful Login with Valid Credentials
 
     Given user is on login Page

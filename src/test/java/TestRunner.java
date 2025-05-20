@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/Features",
         glue = {"steps"},
-        plugin = {"pretty", "html:target/Report/Adrian.html"},
+        plugin = {"pretty", "html:target/Report/SeleniumReport.html"},
         monochrome = true,
         tags = ("@UItest1") //pass the tags of the scenarios you want to be executed
 )
